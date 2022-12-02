@@ -31,6 +31,12 @@ public class AlbumController {
         model.addAttribute("album",new Album());
         return "album/AlbumForm";
     }
+
+    @GetMapping("/album/list")
+    public String showAlbum(){
+        return "redirect:/";
+    }
+
     @PostMapping("/album/save")
     public String saveAlbum(@ModelAttribute Album album
                             /*@RequestParam("logo") MultipartFile multipartFile*/) throws IOException {

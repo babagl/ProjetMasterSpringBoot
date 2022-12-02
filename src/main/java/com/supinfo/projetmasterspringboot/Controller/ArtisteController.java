@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/artiste")
+
 public class ArtisteController {
     private ArtisteService artisteService;
 
     @GetMapping("/artiste/list")
     public String saveArtiste(Model model){
-
-        return " ";
+        System.out.println("Show list Artiste");
+        return "Artiste/ListArtistes";
     }
 }
