@@ -1,5 +1,7 @@
 package com.supinfo.projetmasterspringboot.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,7 +14,9 @@ public class Album {
     @Column(nullable = false,unique = true, length = 50)
     private String titreAlbum;
     private String genre;
+    @Column(length = 45, nullable = true)
     private String logo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDeSortie;
 
     public Long getIdAlbum() {

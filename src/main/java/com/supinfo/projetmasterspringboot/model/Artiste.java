@@ -2,8 +2,7 @@ package com.supinfo.projetmasterspringboot.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @Table(name = "artiste")

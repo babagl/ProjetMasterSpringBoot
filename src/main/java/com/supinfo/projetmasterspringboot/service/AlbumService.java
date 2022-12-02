@@ -14,4 +14,8 @@ public class AlbumService {
     public List<Album> getAll(){
         return repository.findAll();
     }
+
+    public Album saveAlbum(Album album){
+        return repository.save(album);
+    }
 }
