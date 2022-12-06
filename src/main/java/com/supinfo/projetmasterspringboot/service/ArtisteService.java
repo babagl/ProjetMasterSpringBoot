@@ -13,7 +13,7 @@ public class ArtisteService {
     public ArtisteService(ArtisteRepository artisteRepository) {
         this.artisteRepository = artisteRepository;
     }
-    public List<Artiste> artistes(){
+    public List<Artiste> getArtistes(){
         return artisteRepository.findAll();
     }
 

@@ -1,5 +1,7 @@
 package com.supinfo.projetmasterspringboot.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -13,6 +15,7 @@ public class Artiste {
     private String nom;
     private String prenom;
     private String genre;//sexe
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDeNaissance;
     private String pays;
 

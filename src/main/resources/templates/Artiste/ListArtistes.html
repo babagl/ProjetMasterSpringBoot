@@ -9,6 +9,41 @@
 <body>
 <header th:replace="Fragment :: header"/>
 
+<div class="container-fluid">
+    <h1 class="text-center text-capitalize">List des Artistes</h1>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Date de Naissance</th>
+            <th scope="col">Pays</th>
+            <th scope="col">Voir Plus</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="artistes : ${artiste}">
+            <tr>
+                <th scope="row">[[${artistes.IdArtiste}]]</th>
+                <td>[[${artistes.nom}]]</td>
+                <td>[[${artistes.Prenom}]]</td>
+                <td>[[${artistes.genre}]]</td>
+                <td>[[${artistes.pays}]]</td>
+                <td>[[${artistes.dateDeNaissance}]]</td>
+                <td class="h3"><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/>
+                    <path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/>
+                </svg></a></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <div class="m-2 text-right">
+        <button class="btn btn-success"><a class="h3" th:href="@{/artiste/new}">Ajouter un Artiste</a></button>
+    </div>
+</div>
 
 </body>
 </html>

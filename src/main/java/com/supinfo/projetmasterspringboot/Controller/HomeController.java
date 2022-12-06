@@ -20,6 +20,7 @@ public class HomeController {
     public String showHomePage(Model model) {
         System.out.println("show main controller");
         List<Album> albumList = service.getAll();
+        System.out.println(albumList);
         model.addAttribute("albumsList",albumList);
         return "index";
     }
