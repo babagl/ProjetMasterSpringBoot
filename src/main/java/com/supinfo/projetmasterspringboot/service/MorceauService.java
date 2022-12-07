@@ -17,4 +17,8 @@ public class MorceauService {
      public Morceau morceau(Morceau morceau){
         return morceauRepository.save(morceau);
      }
+
+     public Morceau saveMorceau(Morceau morceau){
+        return morceauRepository.save(morceau);
+     }
 }

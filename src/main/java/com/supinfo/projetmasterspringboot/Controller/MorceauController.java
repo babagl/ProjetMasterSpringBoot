@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MorceauController {
@@ -19,9 +20,15 @@ public class MorceauController {
         return "morceau/Morceau";
     }
 
-    @GetMapping()
+    @GetMapping("/morceau/new")
     public String newMorceau(Model model){
         model.addAttribute("mo", new Morceau());
         return "morceau/morceauform";
+    }
+
+    @PostMapping("/morceau/saved")
+    public String saveMorceau(@ModelAttribute Morceau morceau){
+        service.saveMorceau(morceau);
+        return "redirect:/morceau/list";
     }
 }
