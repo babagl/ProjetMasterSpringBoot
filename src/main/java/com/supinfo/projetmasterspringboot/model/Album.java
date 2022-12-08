@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "album")
@@ -16,9 +18,12 @@ public class Album {
     private String genre;
     @Column(length = 45, nullable = true)
     private String logo;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateDeSortie;
-
+    @OneToMany
+    @JoinColumn(name = "id_album")
+    List<Morceau> morceauList = new ArrayList<>() ;
     public Long getIdAlbum() {
         return IdAlbum;
     }
@@ -59,6 +64,14 @@ public class Album {
         this.dateDeSortie = dateDeSortie;
     }
 
+    public List<Morceau> getMorceauList() {
+        return morceauList;
+    }
+
+    public void setMorceauList(List<Morceau> morceauList) {
+        this.morceauList = morceauList;
+    }
+
     @Override
     public String toString() {
         return "Album{" +
@@ -67,6 +80,7 @@ public class Album {
                 ", genre='" + genre + '\'' +
                 ", logo='" + logo + '\'' +
                 ", dateDeSortie=" + dateDeSortie +
+                ", morceauList=" + morceauList +
                 '}';
     }
 }

@@ -10,6 +10,17 @@ public class Morceau {
     private Long idMorceau;
     private String titreMorceau;
     private Long Duree;
+    @ManyToOne
+    @JoinColumn(name = "id_artiste")
+    private Artiste artiste;
+
+    public Artiste getArtiste() {
+        return artiste;
+    }
+
+    public void setArtiste(Artiste artiste) {
+        this.artiste = artiste;
+    }
 
     public Long getIdMorceau() {
         return idMorceau;
@@ -33,5 +44,15 @@ public class Morceau {
 
     public void setDuree(Long duree) {
         Duree = duree;
+    }
+
+    @Override
+    public String toString() {
+        return "Morceau{" +
+                "idMorceau=" + idMorceau +
+                ", titreMorceau='" + titreMorceau + '\'' +
+                ", Duree=" + Duree +
+                ", artiste=" + artiste +
+                '}';
     }
 }

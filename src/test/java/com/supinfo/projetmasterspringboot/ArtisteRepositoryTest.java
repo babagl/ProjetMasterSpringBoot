@@ -34,8 +34,8 @@ public class ArtisteRepositoryTest {
     @Test
     public void testAddNewArtiste(){
         Artiste artiste = new Artiste();
-        artiste.setNom("Abdoulaye Aliou");
-        artiste.setPrenom("Sall");
+        artiste.setNom("Dione");
+        artiste.setPrenom("Mbaha");
         artiste.setPays("Senegal");
         artiste.setDateDeNaissance(LocalDate.now());
         artiste.setGenre("masculin");
@@ -45,7 +45,7 @@ public class ArtisteRepositoryTest {
         Assertions.assertThat(artisteSaved.getIdArtiste()).isGreaterThan(0);
 
         Album album = new Album();
-        album.setTitreAlbum("Ennemi");
+        album.setTitreAlbum("Bercy");
         album.setGenre("Rap");
         album.setLogo("logos");
         album.setDateDeSortie(LocalDate.now());

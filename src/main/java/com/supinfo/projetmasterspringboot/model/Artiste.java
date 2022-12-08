@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -19,17 +21,28 @@ public class Artiste {
     private LocalDate dateDeNaissance;
     private String pays;
 
+    @OneToMany(mappedBy = "artiste" ,cascade = CascadeType.PERSIST)
+    List<Morceau> morceauList = new ArrayList<>();
+
     public Artiste() {
     }
 
-    public Artiste(Long idArtiste, String nom, String prenom, String genre, LocalDate dateDeNaissance, String pays) {
+    public Artiste(Long idArtiste, String nom, String prenom, String genre, LocalDate dateDeNaissance, String pays, List<Morceau> morceauList) {
         IdArtiste = idArtiste;
         this.nom = nom;
         this.prenom = prenom;
         this.genre = genre;
         this.dateDeNaissance = dateDeNaissance;
         this.pays = pays;
+        this.morceauList = morceauList;
+    }
 
+    public List<Morceau> getMorceauList() {
+        return morceauList;
+    }
+
+    public void setMorceauList(List<Morceau> morceauList) {
+        this.morceauList = morceauList;
     }
 
     public Long getIdArtiste() {
@@ -81,4 +94,7 @@ public class Artiste {
     }
 
 
+    public String toString() {
+        return prenom+" "+nom;
+    }
 }

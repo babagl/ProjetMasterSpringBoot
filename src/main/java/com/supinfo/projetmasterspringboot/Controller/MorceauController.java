@@ -1,6 +1,8 @@
 package com.supinfo.projetmasterspringboot.Controller;
 
 import com.supinfo.projetmasterspringboot.model.Morceau;
+import com.supinfo.projetmasterspringboot.service.AlbumService;
+import com.supinfo.projetmasterspringboot.service.ArtisteService;
 import com.supinfo.projetmasterspringboot.service.MorceauService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,12 @@ public class MorceauController {
     @Autowired
     private MorceauService service;
 
+    @Autowired
+    private ArtisteService artisteService;
+
+    @Autowired
+    private AlbumService albumService;
+
     @GetMapping("/morceau/list")
     public String showMorceau(Model model){
         model.addAttribute("m", service.morceauList());
@@ -22,6 +30,8 @@ public class MorceauController {
 
     @GetMapping("/morceau/new")
     public String newMorceau(Model model){
+        model.addAttribute("art", artisteService.getArtistes());
+        model.addAttribute("alb", albumService.getAll());
         model.addAttribute("mo", new Morceau());
         return "morceau/morceauform";
     }

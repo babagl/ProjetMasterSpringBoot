@@ -1,7 +1,9 @@
 package com.supinfo.projetmasterspringboot.Controller;
 
 import com.supinfo.projetmasterspringboot.model.Artiste;
+import com.supinfo.projetmasterspringboot.model.Morceau;
 import com.supinfo.projetmasterspringboot.service.ArtisteService;
+import com.supinfo.projetmasterspringboot.service.MorceauService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,11 @@ import java.util.List;
 
 public class ArtisteController {
     private ArtisteService artisteService;
+    private MorceauService morceauService;
 
-    public ArtisteController(ArtisteService artisteService) {
+    public ArtisteController(ArtisteService artisteService, MorceauService morceauService) {
         this.artisteService = artisteService;
+        this.morceauService = morceauService;
     }
 
     @GetMapping("/artiste/list")
@@ -30,7 +34,10 @@ public class ArtisteController {
 
     @GetMapping("artiste/new")
     public String newArtiste(Model model){
+        List<Morceau> morceaus = morceauService.morceauList();
         model.addAttribute("artiste", new Artiste());
+        model.addAttribute("morceau" , morceaus);
+
         return "Artiste/Artisteform";
     }
 
@@ -38,5 +45,10 @@ public class ArtisteController {
     public String saveArtiste(@ModelAttribute Artiste artiste){
         artisteService.saveArtiste(artiste);
         return "redirect:/artiste/list";
+    }
+
+    @GetMapping()
+    public String showDetailsArtiste(){
+        return "Artiste/details";
     }
 }
